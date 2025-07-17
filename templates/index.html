@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AgriKart - Your Agriculture Partner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('{{ url_for('static', filename='images/agriculture.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #90EE90 !important; /* light green */
+        }
+
+        .hero {
+            position: relative;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-section {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px auto;
+            color: #fff;
+            max-width: 1200px;
+        }
+
+        .glass-section h2 {
+            color: #fff;
+        }
+
+        .card {
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+        }
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .btn-outline-light {
+            border-color: #fff;
+            color: #fff;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #fff;
+            color: #8B4513;
+        }
+
+        footer {
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">AgriKart</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('view_cart') }}">Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Welcome to AgriKart</h1>
+        <p class="lead fs-4">Empowering Farmers with Quality Products and Knowledge</p>
+    </div>
+</div>
+
+<!-- About Agriculture -->
+<div class="glass-section">
+    <h2>About Agriculture</h2>
+    <p>Agriculture is the backbone of our country, feeding millions and driving the economy. It includes cultivation, livestock, forestry, and fisheries, providing employment to a large section of the population.</p>
+    <p>Modern agriculture combines traditional practices with technology to improve yield, ensure food security, and sustain resources for future generations.</p>
+</div>
+
+<!-- About AgriKart -->
+<div class="glass-section">
+    <h2>About AgriKart</h2>
+    <p>AgriKart is an online platform providing farmers with easy access to high-quality seeds, fertilizers, pesticides, and farm tools at affordable prices. Our mission is to support and empower the farming community by ensuring the best agricultural inputs reach them efficiently.</p>
+</div>
+
+<!-- Shop by Category -->
+<div class="glass-section">
+    <h2 class="text-center mb-5">Shop by Category</h2>
+    <div class="row">
+        <!-- Seeds -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/seeds.jpg') }}" class="card-img-top" alt="Seeds">
+                <div class="card-body">
+                    <h5 class="card-title">Seeds</h5>
+                    <a href="{{ url_for('products_by_category', category='Seeds') }}" class="btn btn-outline-light w-100">View</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fertilizers -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/fertilizers.jpg') }}" class="card-img-top" alt="Fertilizers">
+                <div class="card-body">
+                    <h5 class="card-title">Fertilizers</h5>
+                    <a href="{{ url_for('products_by_category', category='Fertilizers') }}" class="btn btn-outline-light w-100">View</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pesticides -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/pesticides.jpg') }}" class="card-img-top" alt="Pesticides">
+                <div class="card-body">
+                    <h5 class="card-title">Pesticides</h5>
+                    <a href="{{ url_for('products_by_category', category='Pesticides') }}" class="btn btn-outline-light w-100">View</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Farm Tools -->
+        <div class="col-md-3 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/farm_tools.jpg') }}" class="card-img-top" alt="Farm Tools">
+                <div class="card-body">
+                    <h5 class="card-title">Farm Tools</h5>
+                    <a href="{{ url_for('products_by_category', category='Farm Tools') }}" class="btn btn-outline-light w-100">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-white text-center py-3">
+    <div class="container">
+        <p class="mb-0">© 2025 AgriKart | Designed for Agricultural Empowerment</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
